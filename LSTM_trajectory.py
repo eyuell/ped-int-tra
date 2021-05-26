@@ -20,16 +20,14 @@ Trajectory Prediction", ICCV 2019.
 import numpy as np
 import os
 import pickle
-from os.path import join, isfile, exists
-from os import listdir, makedirs
+from os.path import isfile, exists
+from os import makedirs
 import pathlib
 import sys
 
 from keras.layers import Input, LSTM, Dense, Concatenate, Flatten
-from keras.layers import RepeatVector, Dropout, Permute, Multiply
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.models import Sequential, Model, load_model
-from keras.optimizers import RMSprop
 
 from prettytable import PrettyTable
 
@@ -307,7 +305,6 @@ def main(data_set="pie"):
     check_path(traject_model_path)
     check_path(speed_model_path)
 
-    
     n_batch = 64
     n_epochs = 100
     n_filters = 256

@@ -50,7 +50,6 @@ from sklearn.metrics import f1_score, fbeta_score, recall_score
 
 from utils import *
 import gc
-import msgpack
 
 #from utilities.jaad_eval import *
 #from utilities.jaad_utilities import *
@@ -627,7 +626,7 @@ class PIEIntent(object):
             fid.write("\n####### Training config #######\n")
             fid.write(str(train_config))
 
-        early_stop = EarlyStopping(monitor='loss',
+        early_stop = EarlyStopping(monitor='val_loss',
                                    min_delta=0.0001,
                                    patience=10,
                                    verbose=1)

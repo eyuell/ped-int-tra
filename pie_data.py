@@ -85,15 +85,15 @@ class PIE(object):
         :param image_set: Image set split
         :return: Set ids of the image set
         """
-        #PIE only
+        # PIE only
         image_set_nums = {'train': ['set01', 'set02', 'set04'],
                           'val': ['set05', 'set06'],
                           'test': ['set03'],
                           'all': ['set01', 'set02', 'set03',
                                   'set04', 'set05', 'set06',
                                   'wod1tr', 'wod2va', 'wod3te']}
-        #Waymo only
-        if self._data_mix=='waymo':
+        # Waymo only
+        if self._data_mix == 'waymo':
             image_set_nums = {'train': ['wod1tr'],
                               'val': ['wod2va'],
                               'test': ['wod3te'],
@@ -101,8 +101,8 @@ class PIE(object):
                                     'set04', 'set05', 'set06',
                                     'wod1tr', 'wod2va', 'wod3te']}
 
-        #PIE Waymo hybrid
-        if self._data_mix=='pie-waymo':
+        # PIE Waymo hybrid
+        if self._data_mix == 'pie-waymo':
             image_set_nums = {'train': ['set01', 'set02', 'set04'],
                               'val': ['set05', 'set06'],
                               'test': ['wod1tr', 'wod2va', 'wod3te'],

@@ -23,21 +23,21 @@ import pickle
 import pathlib
 import sys
 
-from os.path import join, isfile, exists
+from os.path import isfile, exists
 from os import listdir, makedirs
 
 from keras.layers import Input, LSTM, Dense, Reshape, Concatenate
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.models import Sequential, Model, load_model
-from keras.optimizers import RMSprop, SGD
 
 from prettytable import PrettyTable
 
 from sklearn.metrics import accuracy_score
-from sklearn.metrics import f1_score, fbeta_score, recall_score, precision_score
+from sklearn.metrics import f1_score, fbeta_score, recall_score
 
 import time
 from datetime import timedelta
+
 
 def check_path(f_path):
     if not exists(f_path):
@@ -131,11 +131,8 @@ def predict_intention(model, n_batch, data_path, dataset):
 
     Xtest = []
     Ytest = []
-    size1 = 0
-    size2 = 0
 
     test_results = np.array([])
-    tmp_res = np.array([])
 
     x_key = 'int_test_data_'
     y_key = 'int_target_data_'
@@ -183,6 +180,7 @@ def predict_intention(model, n_batch, data_path, dataset):
 
 def get_model(n_batch, n_epochs, n_filters, best_model_file, model_file, data_path):
     train_new = False
+    model = None
 
     if isfile(best_model_file):
         print("Do you want to load a trained model?")

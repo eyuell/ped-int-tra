@@ -30,20 +30,11 @@ from pie_predict import PIEPredict
 
 from pie_data import PIE
 
-from tensorflow import keras
 import keras.backend as K
 import tensorflow as tf
 
 from prettytable import PrettyTable
 
-from keras.preprocessing import sequence
-from keras.models import Sequential
-from keras.layers import Dense, Embedding
-from keras.layers import LSTM
-from keras.datasets import imdb
-from keras.callbacks import EarlyStopping
-
-import numpy as np
 import time
 from datetime import timedelta
 
@@ -194,14 +185,16 @@ def train_intent(data_mix, train_test=1):
         tf.compat.v1.reset_default_graph()
         return saved_files_path
 
+
 def main(dataset='pie', train_test=2, data_mix='pie'):
-	start = time.time()
-	intent_model_path = train_intent(data_mix, train_test=train_test)
-	train_predict(data_mix, dataset=dataset, train_test=train_test, intent_model_path=intent_model_path)
-	end = time.time()
-	elapsed = end - start
-	t_del = timedelta(seconds=elapsed)
-	sys.stdout.write('Done. Elapsed time = {}\n'.format(t_del))
+    start = time.time()
+    intent_model_path = train_intent(data_mix, train_test=train_test)
+    train_predict(data_mix, dataset=dataset, train_test=train_test, intent_model_path=intent_model_path)
+    end = time.time()
+    elapsed = end - start
+    t_del = timedelta(seconds=elapsed)
+    sys.stdout.write('Done. Elapsed time = {}\n'.format(t_del))
+
 
 if __name__ == '__main__':
     expected_mix = ['pie', 'waymo', 'pie-waymo']
