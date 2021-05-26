@@ -69,7 +69,7 @@ class PIEPredict(object):
         attention_temporal: Temporal attention custom layer
         attention_element: Elementwise attention custom layer
     """
-    def __init__(self,
+    def __init__(self, data_loc,
                  num_hidden_units=256,
                  regularizer_val=0.0001,
                  activation='softsign',
@@ -95,7 +95,7 @@ class PIEPredict(object):
 
         self._prediction_size = 4
         
-        self._path_for_lstm = str(pathlib.Path().absolute()) + '/data/for_lstm/'
+        self._path_for_lstm = str(pathlib.Path().absolute()) + '/data/for_lstm/' + data_loc + '/'
 
         self._data_extract = data_extract
 
@@ -392,11 +392,6 @@ class PIEPredict(object):
                                             min_lr=1e-07, verbose=1)
             call_backs.extend([early_stop, plateau_sch])
 
-        history = pie_model.fit(x=train_data[0], y=train_data[1],
-                                batch_size=batch_size, epochs=epochs,
-                                validation_data=val_data, verbose=1,
-                                callbacks=call_backs)
-	
         # Custmized for performance checking, Eyu
         if 'bbox' in model_opts['prediction_type']:
             file_name_xTrain = 'tra_xTrain.pkl'
@@ -407,28 +402,37 @@ class PIEPredict(object):
             file_name_yTrain = 'spe_yTrain.pkl'
             file_name_val = 'spe_valData.pkl'
 
-        #if self._data_extract:
-        extract_data(self._path_for_lstm, file_name_xTrain, train_data[0])
-        extract_data(self._path_for_lstm, file_name_yTrain, train_data[1])
-        extract_data(self._path_for_lstm, file_name_val, val_data)
+        # Custmized for performance checking, Eyu
+        if self._data_extract:
+            extract_data(self._path_for_lstm, file_name_xTrain, train_data[0])
+            extract_data(self._path_for_lstm, file_name_yTrain, train_data[1])
+            extract_data(self._path_for_lstm, file_name_val, val_data)
+            return None
 
-        # clear memory
-        if train_data:
-            del train_data 
+        # Custmized for performance checking, Eyu
+        if not self._data_extract:
+            history = pie_model.fit(x=train_data[0], y=train_data[1],
+                                    batch_size=batch_size, epochs=epochs,
+                                    validation_data=val_data, verbose=1,
+                                    callbacks=call_backs)
 
-        if val_data:
-            del val_data
+            # clear memory
+            if train_data:
+                del train_data 
 
-        print('Train model is saved to {}'.format(model_path))
+            if val_data:
+                del val_data
 
-        history_path, saved_files_path = self.get_path(save_folder=model_folder_name,
-                                                       model_type=model_type,
-                                                       file_name='history.pkl')
+            print('Train model is saved to {}'.format(model_path))
 
-        with open(history_path, 'wb') as fid:
-            pickle.dump(history.history, fid, pickle.HIGHEST_PROTOCOL)
+            history_path, saved_files_path = self.get_path(save_folder=model_folder_name,
+                                                        model_type=model_type,
+                                                        file_name='history.pkl')
 
-        return saved_files_path
+            with open(history_path, 'wb') as fid:
+                pickle.dump(history.history, fid, pickle.HIGHEST_PROTOCOL)
+
+            return saved_files_path
 
     def test(self, data_test, model_path=''):
         """
@@ -452,10 +456,10 @@ class PIEPredict(object):
 
         test_results = test_model.predict(test_obs_data, batch_size=2048, verbose=1)
         
-        #if self._data_extract:
-        # Custmized for performance checking
-        extract_data(self._path_for_lstm, 'tra_test_obs_data.pkl', test_obs_data)
-        extract_data(self._path_for_lstm, 'tra_test_target_data.pkl', test_target_data)        
+        if self._data_extract:
+            # Custmized for performance checking
+            extract_data(self._path_for_lstm, 'tra_test_obs_data.pkl', test_obs_data)
+            extract_data(self._path_for_lstm, 'tra_test_target_data.pkl', test_target_data)        
 
         perf = {}
         #  Performance on bounding boxes
@@ -482,10 +486,10 @@ class PIEPredict(object):
             test_obs_data_org = [test_data['enc_input'], test_data['dec_input']]
             test_target_data_org = test_data['pred_target']
 
-            #if self._data_extract:
-            # Custmized for performance checking
-            extract_data(self._path_for_lstm, 'bbox_centers_test_data.pkl', test_obs_data_org)
-            extract_data(self._path_for_lstm, 'bbox_centers_target_data.pkl', test_target_data_org)            
+            if self._data_extract:
+                # Custmized for performance checking
+                extract_data(self._path_for_lstm, 'bbox_centers_test_data.pkl', test_obs_data_org)
+                extract_data(self._path_for_lstm, 'bbox_centers_target_data.pkl', test_target_data_org)            
 
             results_org = test_results + np.expand_dims(test_obs_data_org[0][:, 0, 0:4], axis=1)
 
@@ -626,20 +630,20 @@ class PIEPredict(object):
         speed_results = speed_model.predict(_speed_data,
                                             batch_size=2056,
                                             verbose=1)
-        #if self._data_extract:
-        # Custmized for performance checking
-        extract_data(self._path_for_lstm, 'speed_test_data.pkl', _speed_data)
-        extract_data(self._path_for_lstm, 'speed_target_data.pkl', speed_data['pred_target'])
+        if self._data_extract:
+            # Custmized for performance checking
+            extract_data(self._path_for_lstm, 'speed_test_data.pkl', _speed_data)
+            extract_data(self._path_for_lstm, 'speed_target_data.pkl', speed_data['pred_target'])
         
         # speed intent
         int_speed = np.concatenate([int_data, speed_results], axis=2)
         data_for_test = [box_data['enc_input'], int_speed]
         test_results = box_intent_speed_model.predict(data_for_test,
                                                       batch_size=2056, verbose=1)
-        #if self._data_extract:
-        # Custmized for performance checking
-        extract_data(self._path_for_lstm, 'box_intent_speed_data.pkl', data_for_test)
-        extract_data(self._path_for_lstm, 'box_target_speed_data.pkl', box_data['pred_target'])	    
+        if self._data_extract:
+            # Custmized for performance checking
+            extract_data(self._path_for_lstm, 'box_intent_speed_data.pkl', data_for_test)
+            extract_data(self._path_for_lstm, 'box_target_speed_data.pkl', box_data['pred_target'])	    
 
         # Performance measures for bounding boxes
         perf = {}
@@ -668,10 +672,10 @@ class PIEPredict(object):
 
         del test_data # clear memory
 
-        #if self._data_extract:
-        # Custmized for performance checking
-        extract_data(self._path_for_lstm, 'box_centers_test_data.pkl', test_obs_data_org)
-        extract_data(self._path_for_lstm, 'box_centers_target_data.pkl', test_target_data_org)
+        if self._data_extract:
+            # Custmized for performance checking
+            extract_data(self._path_for_lstm, 'box_centers_test_data.pkl', test_obs_data_org)
+            extract_data(self._path_for_lstm, 'box_centers_target_data.pkl', test_target_data_org)
         
         results_org = test_results + np.expand_dims(test_obs_data_org[0][:, 0, 0:4], axis=1)
 

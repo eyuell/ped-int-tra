@@ -94,14 +94,14 @@ def train_as_new(n_batch, n_epochs, n_filters, model_file, data_path):
     if Xtrain is not None and Ytrain is not None and Val_data is not None:
         model = vanila_LSTM(Xtrain[0].shape, Xtrain[1].shape, n_filters)
 
-        early_stop = EarlyStopping(monitor='val_loss',
+        early_stop = EarlyStopping(monitor='val_accuracy',
                                     min_delta=0.0001,
                                     patience=10,
                                     verbose=1)
 
-        plateau_sch = ReduceLROnPlateau(monitor='val_loss',
-                                        factor=0.5,
-                                        patience=5,
+        plateau_sch = ReduceLROnPlateau(monitor='val_accuracy',
+                                        factor=0.2,
+                                        patience=10,
                                         min_lr=0.0000001,
                                         verbose = 1)
 
@@ -113,7 +113,7 @@ def train_as_new(n_batch, n_epochs, n_filters, model_file, data_path):
                 batch_size=n_batch,
                 validation_data=Val_data,
                 epochs=n_epochs,
-                callbacks=call_backs,
+                #callbacks=call_backs,
                 verbose=1)
 
         # Save trained model
@@ -217,7 +217,7 @@ def main(data_set="pie"):
     start = time.time()
 
     n_batch = 128
-    n_epochs = 400
+    n_epochs = 100
     n_filters = 256
 
     check_path(lstm_path)

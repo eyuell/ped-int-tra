@@ -178,7 +178,7 @@ def train_bbox(n_batch, n_epochs, call_backs, n_filters, traject_model_file, dat
                     validation_data=[Val_data[0][0],shorten_dim(Val_data[1])],
                     batch_size=n_batch,
                     epochs=n_epochs,
-                    callbacks=call_backs,
+                    #callbacks=call_backs,
                     verbose=1)
 
         # Save trained model
@@ -200,7 +200,7 @@ def get_callback():
 
     plateau_sch = ReduceLROnPlateau(monitor='val_loss',
                                     factor=0.5,
-                                    patience=5,
+                                    patience=10,
                                     min_lr=0.0000001,
                                     verbose = 1)
 

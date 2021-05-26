@@ -50,6 +50,7 @@ from sklearn.metrics import f1_score, fbeta_score, recall_score
 
 from utils import *
 import gc
+from prettytable import PrettyTable
 
 #from utilities.jaad_eval import *
 #from utilities.jaad_utilities import *
@@ -84,7 +85,7 @@ class PIEIntent(object):
         train: trains the model
         test_chunk: tests the model (chunks the test cases for memory efficiency)
     """
-    def __init__(self,
+    def __init__(self, data_loc,
                  num_hidden_units=128,
                  regularizer_val=0.001,
                  activation='tanh',
@@ -123,7 +124,7 @@ class PIEIntent(object):
 
         self._model_name = 'convlstm_encdec'
 
-        self._path_for_lstm = str(pathlib.Path().absolute()) + '/data/for_lstm/'
+        self._path_for_lstm = str(pathlib.Path().absolute()) + '/data/for_lstm/' + data_loc + '/'
 
         self._data_extract = data_extract
 
@@ -425,7 +426,6 @@ class PIEIntent(object):
                                                                         model_name='vgg16_none',
                                                                         data_subset='test'))
         output = output[:, 0]
-
         return ([test_img, decoder_input], output)
 
     def get_model(self, model):
@@ -454,7 +454,7 @@ class PIEIntent(object):
         Create an LSTM Encoder-Decoder model for intention estimation
         '''
         #Generate input data. the shapes is (sequence_lenght,length of flattened features)
-        encoder_input=Input(shape=(self._sequence_length,) + self.context_model.output_shape[1:],
+        encoder_input=input_data=Input(shape=(self._sequence_length,) + self.context_model.output_shape[1:],
                                        name = "encoder_input")
         interm_input = encoder_input
 
@@ -537,10 +537,8 @@ class PIEIntent(object):
                         'dataset': 'pie'}
         self._model_type = 'convlstm_encdec'
         seq_length = data_opts['max_size_observe']
-
         train_d = self.get_train_val_data(data_train, data_type, seq_length, data_opts['seq_overlap_rate'])
         del data_train  # clear memory
-
         val_d = self.get_train_val_data(data_val, data_type, seq_length, data_opts['seq_overlap_rate'])
         del data_val  # clear memory
 
@@ -562,10 +560,6 @@ class PIEIntent(object):
                                                                          data_type='features'+'_'+data_opts['crop_type']+'_'+data_opts['crop_mode'], # images
                                                                          model_name='vgg16_'+'none',
                                                                          data_subset = 'train'))
-
-        train_d['output'] = train_d['output'][:, 0]
-        train_data = ([train_img, train_d['decoder_input']], train_d['output'])
-
         val_img = self.load_images_and_process(val_d['images'],
                                                val_d['bboxes'],
                                                train_d['ped_ids'],
@@ -575,7 +569,12 @@ class PIEIntent(object):
                                                                        model_name='vgg16_'+'none',
                                                                        data_subset='val'))
 
+        train_model = self.pie_convlstm_encdec()
+
+        train_d['output'] = train_d['output'][:, 0]
         val_d['output'] = val_d['output'][:, 0]
+
+        train_data = ([train_img, train_d['decoder_input']], train_d['output'])
         val_data = ([val_img, val_d['decoder_input']], val_d['output'])
 
         #clear memory
@@ -584,8 +583,6 @@ class PIEIntent(object):
 
         if val_d:
             del val_d
-        
-        train_model = self.pie_convlstm_encdec()
 
         optimizer = RMSprop(lr=optimizer_params['lr'],
                             decay=optimizer_params['decay'],
@@ -602,7 +599,6 @@ class PIEIntent(object):
                                       models_save_folder=model_folder_name,
                                       file_name='model.h5',
                                       save_root_folder='data')
-
         config_path, _ = self.get_path(type_save='models',
                                        model_name='convlstm_encdec',
                                        models_save_folder=model_folder_name,
@@ -614,7 +610,6 @@ class PIEIntent(object):
             pickle.dump([self.get_model_config(),
                         train_config, data_opts],
                         fid, pickle.HIGHEST_PROTOCOL)
-
         print('Wrote configs to {}'.format(config_path))
 
         #Save config and training param files
@@ -626,16 +621,15 @@ class PIEIntent(object):
             fid.write("\n####### Training config #######\n")
             fid.write(str(train_config))
 
+
         early_stop = EarlyStopping(monitor='val_loss',
                                    min_delta=0.0001,
-                                   patience=10,
+                                   patience=5,
                                    verbose=1)
-
         checkpoint = ModelCheckpoint(filepath=model_path,
                                      save_best_only=True,
                                      save_weights_only=False,
                                      monitor=train_config['learning_scheduler_params']['monitor_value'])  #, mode = 'min'
-
         plateau_sch = ReduceLROnPlateau(monitor=train_config['learning_scheduler_params']['monitor_value'],
                 factor=train_config['learning_scheduler_params']['step_drop_rate'],
                 patience=train_config['learning_scheduler_params']['plateau_patience'],
@@ -644,51 +638,53 @@ class PIEIntent(object):
 
         call_backs = [checkpoint, early_stop, plateau_sch]
 
-        history = train_model.fit(x=train_data[0],
-                                  y=train_data[1],
-                                  batch_size=batch_size,
-                                  epochs=epochs,
-                                  validation_data=val_data,
-                                  callbacks=call_backs,
-                                  verbose=1)
-
-        history_path, saved_files_path = self.get_path(type_save='models',
-                                                       model_name='convlstm_encdec',
-                                                       models_save_folder=model_folder_name,
-                                                       file_name='history.pkl',
-                                                       save_root_folder='data')
-
-        with open(history_path, 'wb') as fid:
-            pickle.dump(history.history, fid, pickle.HIGHEST_PROTOCOL)
-        print('Wrote configs to {}'.format(config_path))
-
-        
         # Custmized for performance checking
-        #if self._data_extract:
-        extract_data(self._path_for_lstm, 'int_xTrain.pkl', train_data[0])
-        extract_data(self._path_for_lstm, 'int_yTrain.pkl', train_data[1])
-        extract_data(self._path_for_lstm, 'int_valData.pkl', val_data)
+        if self._data_extract:
+            extract_data(self._path_for_lstm, 'int_xTrain.pkl', train_data[0])
+            extract_data(self._path_for_lstm, 'int_yTrain.pkl', train_data[1])
+            extract_data(self._path_for_lstm, 'int_valData.pkl', val_data)
+            return None
 
-        # Clear memory
-        if train_data:
-            del train_data
+        if not self._data_extract:
+            history = train_model.fit(x=train_data[0],
+                                    y=train_data[1],
+                                    batch_size=batch_size,
+                                    epochs=epochs,
+                                    validation_data=val_data,
+                                    callbacks=call_backs,
+                                    verbose=1)
 
-        if val_data:
-            del val_data
+            history_path, saved_files_path = self.get_path(type_save='models',
+                                                        model_name='convlstm_encdec',
+                                                        models_save_folder=model_folder_name,
+                                                        file_name='history.pkl',
+                                                        save_root_folder='data')
 
-        return saved_files_path
+            with open(history_path, 'wb') as fid:
+                pickle.dump(history.history, fid, pickle.HIGHEST_PROTOCOL)
+            print('Wrote configs to {}'.format(config_path))
+
+            # Clear memory
+            if train_data:
+                del train_data
+
+            if val_data:
+                del val_data
+
+            return saved_files_path
 
     #split test data into chunks
-    def test_chunk(self, data_test, data_opts='', model_path='', visualize=False):
-
+    def test_chunk(self,
+                    data_test,
+                    data_opts='', 
+                    model_path='', 
+                    visualize=False):
         with open(os.path.join(model_path, 'configs.pkl'), 'rb') as fid:
             try:
                 configs = pickle.load(fid)
             except:
                 configs = pickle.load(fid, encoding='bytes')
-
         train_params = configs[1]
-
         self.load_model_config(configs[0])
             # Create context model
         self.context_model = vgg16.VGG16(input_shape=(224, 224, 3),
@@ -719,10 +715,10 @@ class PIEIntent(object):
             k += 1
             data_test_chunk = {}
             data_test_chunk['intention_binary'] = data_test['intention_binary'][i:min(i+100, num_samples)]
-            data_test_chunk['image'] = data_test['image'][i:min(i+100, num_samples)]
-            data_test_chunk['ped_id'] = data_test['ped_id'][i:min(i+100, num_samples)]
-            data_test_chunk['intention_prob'] = data_test['intention_prob'][i:min(i+100, num_samples)]
-            data_test_chunk['bbox'] = data_test['bbox'][i:min(i+100, num_samples)]
+            data_test_chunk['image'] = data_test['image'][i:min(i+100,num_samples)]
+            data_test_chunk['ped_id'] = data_test['ped_id'][i:min(i+100,num_samples)]
+            data_test_chunk['intention_prob'] = data_test['intention_prob'][i:min(i+100,num_samples)]
+            data_test_chunk['bbox'] = data_test['bbox'][i:min(i+100,num_samples)]
 
             test_data_chunk, test_target_data_chunk = self.get_test_data(data_test_chunk,
                                                                                 train_params,
@@ -733,34 +729,34 @@ class PIEIntent(object):
                                                                                         train_params['data_type'],
                                                                                         self._sequence_length,
                                                                                         overlap)
-            tracks = []
+
+
             test_results_chunk = test_model.predict(test_data_chunk,
                                                     batch_size=train_params['batch_size'],
                                                     verbose=1)           
-            #if self._data_extract:
-            # Customized for data comparison, Eyu 
-            print("\nSaving data for other models, batch", k)
+            if self._data_extract:
+                # Customized for data comparison, Eyu 
+                print("\nSaving data for other models, batch", k)
 
-            extract_data(self._path_for_lstm, 'int_test_data_' +str(k) + '.pkl', test_data_chunk)
-            del test_data_chunk # clear memory
+                extract_data(self._path_for_lstm, 'int_test_data_' +str(k) + '.pkl', test_data_chunk)
+                del test_data_chunk # clear memory
 
-            extract_data(self._path_for_lstm, 'int_target_data_' +str(k) + '.pkl', test_target_data_chunk)
-            #del test_target_data_chunk # clear memory
+                extract_data(self._path_for_lstm, 'int_target_data_' +str(k) + '.pkl', test_target_data_chunk)
+                #del test_target_data_chunk # clear memory
             
-            #if not self._data_extract:
-            # The four lines below can be commented while savind data for other Models, Eyu
-            test_target_data.extend(test_target_data_chunk)
-            test_results.extend(test_results_chunk)
-            images.extend(images_chunk)
-            ped_ids.extend(ped_ids_chunk)
-
+            if not self._data_extract:
+                # The four lines below can be commented while savind data for other Models, Eyu
+                test_target_data.extend(test_target_data_chunk)
+                test_results.extend(test_results_chunk)
+                images.extend(images_chunk)
+                ped_ids.extend(ped_ids_chunk)
 
             gc.collect() # Clearing Memory for loose data
 
             # Commented to save memory
             """bboxes.extend(bboxes_chunk)
 
-            # This part does not look being used, so, saving memory
+            # This part does not look being used, hence, saving memory
             i = -1
             for imp, box, ped in zip(images_chunk, bboxes_chunk, ped_ids_chunk):
                 i+=1
@@ -771,17 +767,31 @@ class PIEIntent(object):
                                     'target': test_target_data_chunk[i]})
             """
 
-        acc = accuracy_score(test_target_data, np.round(test_results))
-        f1 = f1_score(test_target_data, np.round(test_results))
-        f2 = fbeta_score(np.array(test_target_data), np.array(np.round(test_results)), beta=2)
-        recall = recall_score(test_target_data, np.round(test_results))
-        
-        save_results_path = os.path.join(model_path, 'ped_intents.pkl')
-        if not os.path.exists(save_results_path):
-            results = {'ped_id': ped_ids,
-                        'images': images,
-                        'results': test_results,
-                        'gt': test_target_data}
-            with open(save_results_path, 'wb') as fid:
-                pickle.dump(results, fid, pickle.HIGHEST_PROTOCOL)
-        return acc, f1, f2, recall
+        if not self._data_extract:
+            acc = accuracy_score(test_target_data, np.round(test_results))
+            f1 = f1_score(test_target_data, np.round(test_results))
+            f2 = fbeta_score(np.array(test_target_data), np.array(np.round(test_results)), beta=2)
+            recall = recall_score(test_target_data, np.round(test_results))
+            
+            save_results_path = os.path.join(model_path, 'ped_intents.pkl')
+            if not os.path.exists(save_results_path):
+                results = {'ped_id': ped_ids,
+                            'images': images,
+                            'results': test_results,
+                            'gt': test_target_data}
+                with open(save_results_path, 'wb') as fid:
+                    pickle.dump(results, fid, pickle.HIGHEST_PROTOCOL)
+                
+            t = PrettyTable(['Acc', 'F1', 'F2', 'Recall'])
+            t.title = 'PIE Intention model (local_context + bbox)'
+            t.add_row([acc, f1, f2, recall])
+
+            print(t)
+            
+            save_performance_path = os.path.join(saved_files_path,
+                                                '{:.3f}.txt'.format(acc))
+
+            with open(save_performance_path, 'wt') as fid:
+                fid.write("%s\n" % (t))
+
+            #return acc, f1, f2, recall

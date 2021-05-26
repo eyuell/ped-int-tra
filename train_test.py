@@ -33,8 +33,6 @@ from pie_data import PIE
 import keras.backend as K
 import tensorflow as tf
 
-from prettytable import PrettyTable
-
 import time
 from datetime import timedelta
 
@@ -60,7 +58,7 @@ def train_predict(data_mix, dataset='pie',
     if train_test < 0 or train_test > 2:
         data_need = True
 
-    t = PIEPredict(data_extract=data_need)
+    t = PIEPredict(data_mix, data_extract=data_need)
     pie_path = os.environ.copy()['PIE_PATH']
 
     if dataset == 'pie':
@@ -95,13 +93,13 @@ def train_predict(data_mix, dataset='pie',
 
     if train_test > 0:
         beh_seq_test = imdb.generate_data_trajectory_sequence('test', **data_opts)
-        """
+
         perf = t.test_final(beh_seq_test,
                                   traj_model_path=traj_model_path,
                                   speed_model_path=speed_model_path,
                                   intent_model_path=intent_model_path)
-        """
-        perf = t.test(beh_seq_test, model_path=traj_model_path)
+
+        #perf = t.test(beh_seq_test, model_path=traj_model_path)
 
 #train models with data up to critical point
 #only for PIE
@@ -130,7 +128,7 @@ def train_intent(data_mix, train_test=1):
     if train_test < 0 or train_test > 2:
         data_need = True
 
-    t = PIEIntent(num_hidden_units=128,
+    t = PIEIntent(data_mix, num_hidden_units=128,
                   regularizer_val=0.001,
                   lstm_dropout=0.4,
                   lstm_recurrent_dropout=0.2,
@@ -166,19 +164,7 @@ def train_intent(data_mix, train_test=1):
         if saved_files_path == '':
             saved_files_path = pretrained_model_path
         beh_seq_test = imdb.generate_data_trajectory_sequence('test', **data_opts)
-        acc, f1, f2, recall = t.test_chunk(beh_seq_test, data_opts, saved_files_path, False)
-
-        t = PrettyTable(['Acc', 'F1', 'F2', 'Recall'])
-        t.title = 'PIE Intention model'
-        t.add_row([acc, f1, f2, recall])
-
-        print(t)
-        
-        save_performance_path = os.path.join(saved_files_path,
-                                             '{:.3f}.txt'.format(acc))
-
-        with open(save_performance_path, 'wt') as fid:
-            fid.write("%s\n" % (t))
+        t.test_chunk(beh_seq_test, data_opts, saved_files_path, False)
 
         K.clear_session()
         #tf.reset_default_graph()
