@@ -788,7 +788,7 @@ class PIEIntent(object):
 
             print(t)
             
-            save_performance_path = os.path.join(saved_files_path,
+            save_performance_path = os.path.join(save_results_path,
                                                 '{:.3f}.txt'.format(acc))
 
             with open(save_performance_path, 'wt') as fid:
