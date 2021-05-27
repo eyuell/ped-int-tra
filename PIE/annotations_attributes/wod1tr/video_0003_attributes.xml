@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ped_attributes>
+    <pedestrian id="1174c111216" age="adult" crossing="0" crossing_point="00048" exp_start_point="00001" critical_point="00047" intention_prob="0.1" gender="female" intersection="midblock" motion_direction="LONG" num_lanes="3" signalized="n/a" traffic_direction="OW" />
+    <pedestrian id="8eac35fd896" age="child" crossing="0" crossing_point="00075" exp_start_point="00001" critical_point="00074" intention_prob="0" gender="female" intersection="T-right" motion_direction="LONG" num_lanes="3" signalized="n/a" traffic_direction="OW" />
+    <pedestrian id="48074cf6a7b" age="child" crossing="0" crossing_point="00067" exp_start_point="00001" critical_point="00066" intention_prob="0" gender="female" intersection="midblock" motion_direction="LONG" num_lanes="3" signalized="n/a" traffic_direction="OW" />
+    <pedestrian id="befd8465182" age="adult" crossing="0" crossing_point="00077" exp_start_point="00001" critical_point="00076" intention_prob="0.45" gender="male" intersection="T-right" motion_direction="LONG" num_lanes="3" signalized="n/a" traffic_direction="OW" />
+</ped_attributes>

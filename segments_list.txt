@@ -1,0 +1,12 @@
+1) for video_0001 in wod1tr	segment-11971497357570544465_1200_000_1220_000_with_camera_labels.tfrecord
+2) for video_0002 in wod1tr	segment-10061305430875486848_1080_000_1100_000_with_camera_labels.tfrecord
+3) for video_0003 in wod1tr	segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+5) for video_0004 in wod1tr	segment-11940460932056521663_1760_000_1780_000_with_camera_labels.tfrecord
+
+6) for video_0001 in wod2va	segment-1083056852838271990_4080_000_4100_000_with_camera_labels.tfrecord
+7) for video_0002 in wod2va	segment-11940460932056521663_1760_000_1780_000_with_camera_labels.tfrecord
+
+8) for video_0001 in wod3te	segment-1146261869236413282_1680_000_1700_000_with_camera_labels.tfrecord
+
+
+Note: Due to shoratge of annotations video_0004 in wod1tr and video_0002 in wod2va are the same which used to increase the learning data by borrowing validation data.

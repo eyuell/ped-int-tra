@@ -1,0 +1,3 @@
+<ped_attributes>
+    <pedestrian id="caadac137fd" age="adult" crossing="1" crossing_point="00007" exp_start_point="00000" critical_point="00002" intention_prob="0.9" gender="male" intersection="four-way" motion_direction="LAT" num_lanes="2" signalized="n/a" traffic_direction="TW" />
+</ped_attributes>

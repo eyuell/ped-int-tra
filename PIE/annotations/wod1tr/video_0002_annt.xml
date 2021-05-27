@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotations>
+    <version>1.1</version>
+    <meta>
+        <task>
+            <name>wod1tr_video_0002</name>
+            <size>198</size>
+            <labels>
+                <label>
+                    <name>sign</name>
+                    <attributes>
+                        <attribute>@select=type:ped_blue,ped_yellow,ped_white,ped_text,stop_sign,bus_stop,train_stop,construction,other</attribute>
+                        <attribute>@text=id:</attribute>
+                    </attributes>
+                </label>
+                <label>
+                    <name>vehicle</name>
+                    <attributes>
+                        <attribute>@select=type:car,truck,bus,train,bicycle,bike</attribute>
+                        <attribute>@text=id:</attribute>
+                    </attributes>
+                </label>
+                <label>
+                    <name>crosswalk</name>
+                    <attributes>
+                        <attribute>@text=id:</attribute>
+                    </attributes>
+                </label>
+                <label>
+                    <name>transit_station</name>
+                    <attributes>
+                        <attribute>@text=id:</attribute>
+                    </attributes>
+                </label>
+                <label>
+                    <name>traffic_light</name>
+                    <attributes>
+                        <attribute>@select=type:regular,transit,pedestrian</attribute>
+                        <attribute>@text=id:</attribute>
+                        <attribute>~select=state:__undefined__,green,yellow,red</attribute>
+                    </attributes>
+                </label>
+                <label>
+                    <name>pedestrian</name>
+                    <attributes>
+                        <attribute>~select=cross:not-crossing,crossing,crossing-irrelevant</attribute>
+                        <attribute>~select=occlusion:none,part,full</attribute>
+                        <attribute>@text=id:</attribute>
+                        <attribute>~select=action:standing,walking</attribute>
+                        <attribute>~select=gesture:__undefined__,hand_ack,hand_yield,hand_rightofway,nod,other</attribute>
+                        <attribute>~select=look:not-looking,looking</attribute>
+                    </attributes>
+                </label>
+            </labels>
+            <owner>
+                <username>Eyuell</username>
+                <email>gusgebey@student.gu.se</email>
+            </owner>
+            <original_size>
+                <width>1920</width>
+                <height>1280</height>
+            </original_size>
+        </task>
+    </meta>
+    <track label="pedestrian">
+        <box frame="00049" keyframe="1" occluded="0" outside="0" xtl="1092.33" ytl="641.06" xbr="1106.86" ybr="657.49">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00050" keyframe="0" occluded="0" outside="0" xtl="1096.12" ytl="642.96" xbr="1110.65" ybr="659.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00051" keyframe="0" occluded="0" outside="0" xtl="1097.81" ytl="640.64" xbr="1111.07" ybr="658.33">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00052" keyframe="0" occluded="0" outside="0" xtl="1099.5" ytl="638.32" xbr="1111.49" ybr="657.27">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00053" keyframe="0" occluded="0" outside="0" xtl="1101.18" ytl="636.01" xbr="1111.91" ybr="656.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00054" keyframe="1" occluded="0" outside="0" xtl="1088.55" ytl="599.38" xbr="1110.65" ybr="642.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00055" keyframe="0" occluded="0" outside="0" xtl="1090.44" ytl="598.12" xbr="1104.97" ybr="639.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00056" keyframe="0" occluded="0" outside="0" xtl="1085.7" ytl="599.38" xbr="1105.91" ybr="642.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00057" keyframe="0" occluded="0" outside="0" xtl="1085.7" ytl="601.27" xbr="1105.91" ybr="644.85">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00058" keyframe="0" occluded="0" outside="0" xtl="1087.6" ytl="603.17" xbr="1104.02" ybr="646.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00059" keyframe="1" occluded="0" outside="0" xtl="1087.6" ytl="601.27" xbr="1104.02" ybr="644.85">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00060" keyframe="0" occluded="0" outside="0" xtl="1085.71" ytl="603.17" xbr="1102.13" ybr="645.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00061" keyframe="0" occluded="0" outside="0" xtl="1083.81" ytl="605.06" xbr="1100.23" ybr="646.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00062" keyframe="0" occluded="0" outside="0" xtl="1081.91" ytl="606.96" xbr="1102.12" ybr="648.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00063" keyframe="0" occluded="0" outside="0" xtl="1078.76" ytl="606.96" xbr="1095.18" ybr="648.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00064" keyframe="1" occluded="0" outside="0" xtl="1078.28" ytl="606.01" xbr="1093.76" ybr="648.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00065" keyframe="0" occluded="0" outside="0" xtl="1077.81" ytl="605.06" xbr="1092.33" ybr="648.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00066" keyframe="0" occluded="0" outside="0" xtl="1075.91" ytl="605.06" xbr="1090.44" ybr="648.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00067" keyframe="0" occluded="0" outside="0" xtl="1074.02" ytl="606.96" xbr="1088.55" ybr="650.54">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00068" keyframe="0" occluded="0" outside="0" xtl="1074.02" ytl="615.8" xbr="1088.55" ybr="657.49">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00069" keyframe="1" occluded="1" outside="0" xtl="1074.02" ytl="614.54" xbr="1088.55" ybr="656.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00070" keyframe="0" occluded="1" outside="0" xtl="1070.23" ytl="625.27" xbr="1080.97" ybr="636.01">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00071" keyframe="0" occluded="1" outside="0" xtl="1070.23" ytl="623.38" xbr="1080.97" ybr="634.12">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00072" keyframe="0" occluded="1" outside="0" xtl="1065.18" ytl="621.48" xbr="1075.91" ybr="632.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00073" keyframe="0" occluded="1" outside="0" xtl="1063.28" ytl="617.7" xbr="1077.81" ybr="628.43">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00074" keyframe="1" occluded="1" outside="0" xtl="1061.39" ytl="613.91" xbr="1072.12" ybr="624.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00075" keyframe="0" occluded="1" outside="0" xtl="1059.49" ytl="612.64" xbr="1074.02" ybr="623.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00076" keyframe="0" occluded="1" outside="0" xtl="1051.91" ytl="605.06" xbr="1066.44" ybr="615.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00077" keyframe="0" occluded="1" outside="0" xtl="1044.97" ytl="605.06" xbr="1059.49" ybr="615.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00078" keyframe="0" occluded="1" outside="0" xtl="1044.97" ytl="601.27" xbr="1059.49" ybr="615.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00079" keyframe="1" occluded="1" outside="0" xtl="1044.97" ytl="603.17" xbr="1059.49" ybr="613.91">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00080" keyframe="0" occluded="1" outside="0" xtl="1043.07" ytl="596.22" xbr="1053.81" ybr="606.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00081" keyframe="0" occluded="1" outside="0" xtl="1041.18" ytl="588.64" xbr="1051.91" ybr="603.17">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00082" keyframe="0" occluded="1" outside="0" xtl="1039.28" ytl="584.85" xbr="1053.81" ybr="599.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00083" keyframe="0" occluded="1" outside="0" xtl="1040.23" ytl="584.85" xbr="1052.86" ybr="599.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00084" keyframe="1" occluded="1" outside="0" xtl="1041.18" ytl="584.85" xbr="1051.91" ybr="599.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00085" keyframe="0" occluded="1" outside="0" xtl="1033.6" ytl="575.38" xbr="1048.12" ybr="595.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00086" keyframe="0" occluded="1" outside="0" xtl="1034.23" ytl="568.43" xbr="1044.97" ybr="595.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00087" keyframe="0" occluded="1" outside="0" xtl="1035.91" ytl="568.43" xbr="1047.91" ybr="598.12">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00088" keyframe="0" occluded="1" outside="0" xtl="1037.6" ytl="568.43" xbr="1050.86" ybr="600.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00089" keyframe="1" occluded="0" outside="0" xtl="1039.28" ytl="568.43" xbr="1053.81" ybr="603.17">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00090" keyframe="0" occluded="0" outside="0" xtl="1030.44" ytl="552.01" xbr="1044.97" ybr="586.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00091" keyframe="0" occluded="0" outside="0" xtl="1029.49" ytl="548.22" xbr="1045.91" ybr="582.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00092" keyframe="0" occluded="0" outside="0" xtl="1023.81" ytl="535.59" xbr="1044.02" ybr="574.12">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00093" keyframe="1" occluded="0" outside="0" xtl="1020.97" ytl="531.8" xbr="1043.07" ybr="570.33">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00094" keyframe="1" occluded="1" outside="0" xtl="1020.97" ytl="537.48" xbr="1043.07" ybr="572.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00095" keyframe="0" occluded="1" outside="0" xtl="1026.65" ytl="541.27" xbr="1041.18" ybr="576.01">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00096" keyframe="0" occluded="1" outside="0" xtl="1023.81" ytl="537.48" xbr="1040.23" ybr="576.01">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00097" keyframe="0" occluded="1" outside="0" xtl="1020.97" ytl="533.69" xbr="1043.07" ybr="572.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00098" keyframe="0" occluded="1" outside="0" xtl="1019.07" ytl="531.8" xbr="1033.6" ybr="562.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00099" keyframe="1" occluded="1" outside="0" xtl="1019.07" ytl="530.54" xbr="1033.6" ybr="561.48">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00100" keyframe="0" occluded="1" outside="0" xtl="1019.07" ytl="532.43" xbr="1033.6" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00101" keyframe="0" occluded="1" outside="0" xtl="1016.23" ytl="528.64" xbr="1032.65" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00102" keyframe="0" occluded="1" outside="0" xtl="1014.33" ytl="528.64" xbr="1034.54" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00103" keyframe="0" occluded="1" outside="0" xtl="1012.12" ytl="524.85" xbr="1034.23" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00104" keyframe="1" occluded="1" outside="0" xtl="1006.44" ytl="519.17" xbr="1028.54" ybr="553.9">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00105" keyframe="0" occluded="1" outside="0" xtl="1006.44" ytl="522.96" xbr="1028.54" ybr="553.9">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00106" keyframe="0" occluded="1" outside="0" xtl="1006.44" ytl="522.96" xbr="1028.54" ybr="553.9">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00107" keyframe="0" occluded="1" outside="0" xtl="1006.44" ytl="515.38" xbr="1028.54" ybr="550.11">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00108" keyframe="0" occluded="1" outside="0" xtl="1003.6" ytl="506.54" xbr="1023.81" ybr="541.27">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00109" keyframe="1" occluded="1" outside="0" xtl="1002.65" ytl="504.64" xbr="1024.75" ybr="539.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00110" keyframe="0" occluded="1" outside="0" xtl="1003.6" ytl="504.64" xbr="1020.02" ybr="535.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00111" keyframe="0" occluded="1" outside="0" xtl="1000.44" ytl="504.64" xbr="1016.86" ybr="535.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00112" keyframe="1" occluded="1" outside="0" xtl="996.65" ytl="505.59" xbr="1014.97" ybr="538.43">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00113" keyframe="0" occluded="1" outside="0" xtl="992.86" ytl="506.54" xbr="1013.07" ybr="541.27">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00114" keyframe="1" occluded="1" outside="0" xtl="989.07" ytl="508.43" xbr="1009.28" ybr="543.17">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00115" keyframe="0" occluded="1" outside="0" xtl="991.91" ytl="512.22" xbr="1006.44" ybr="545.06">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00116" keyframe="0" occluded="1" outside="0" xtl="997.6" ytl="531.8" xbr="1008.33" ybr="553.9">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00130" keyframe="0" occluded="1" outside="0" xtl="873.25" ytl="499.74" xbr="883.98" ybr="520.19">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00134" keyframe="1" occluded="1" outside="0" xtl="838.23" ytl="487.17" xbr="848.96" ybr="503.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00135" keyframe="0" occluded="1" outside="0" xtl="829.59" ytl="483.17" xbr="840.33" ybr="497.69">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00136" keyframe="0" occluded="1" outside="0" xtl="815.07" ytl="477.48" xbr="829.59" ybr="497.69">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00137" keyframe="0" occluded="1" outside="0" xtl="799.59" ytl="473.69" xbr="816.01" ybr="495.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00138" keyframe="0" occluded="1" outside="0" xtl="786.96" ytl="475.59" xbr="803.38" ybr="497.69">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00139" keyframe="1" occluded="1" outside="0" xtl="768.65" ytl="480.64" xbr="785.07" ybr="502.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00140" keyframe="0" occluded="1" outside="0" xtl="753.17" ytl="469.9" xbr="775.28" ybr="504.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00141" keyframe="0" occluded="1" outside="0" xtl="732.96" ytl="473.69" xbr="755.07" ybr="504.64">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00142" keyframe="0" occluded="1" outside="0" xtl="717.8" ytl="468.01" xbr="744.96" ybr="502.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00143" keyframe="0" occluded="1" outside="0" xtl="691.91" ytl="468.01" xbr="722.85" ybr="502.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00144" keyframe="1" occluded="1" outside="0" xtl="668.54" ytl="468.01" xbr="703.28" ybr="502.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00145" keyframe="0" occluded="1" outside="0" xtl="646.43" ytl="464.22" xbr="681.17" ybr="502.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00146" keyframe="0" occluded="1" outside="0" xtl="623.7" ytl="460.43" xbr="645.8" ybr="498.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00147" keyframe="0" occluded="1" outside="0" xtl="593.38" ytl="459.17" xbr="620.54" ybr="497.69">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00148" keyframe="0" occluded="1" outside="0" xtl="570.01" ytl="457.27" xbr="600.96" ybr="498.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00149" keyframe="1" occluded="1" outside="0" xtl="540.33" ytl="462.96" xbr="575.06" ybr="510.32">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00150" keyframe="0" occluded="1" outside="0" xtl="507.48" ytl="469.9" xbr="542.22" ybr="519.17">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00151" keyframe="0" occluded="1" outside="0" xtl="477.48" ytl="466.11" xbr="514.11" ybr="515.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00152" keyframe="0" occluded="1" outside="0" xtl="451.27" ytl="460.43" xbr="489.8" ybr="515.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00153" keyframe="0" occluded="1" outside="0" xtl="418.43" ytl="429.48" xbr="449.38" ybr="548.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00154" keyframe="1" occluded="1" outside="0" xtl="379.9" ytl="432.01" xbr="418.43" ybr="552.01">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00155" keyframe="0" occluded="1" outside="0" xtl="356.53" ytl="437.69" xbr="391.27" ybr="557.69">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">part</attribute>
+        </box>
+        <box frame="00156" keyframe="0" occluded="1" outside="0" xtl="327.48" ytl="439.59" xbr="362.22" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00157" keyframe="0" occluded="0" outside="0" xtl="302.85" ytl="432.01" xbr="350.22" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00158" keyframe="0" occluded="0" outside="0" xtl="279.79" ytl="432.01" xbr="321.48" ybr="559.59">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00159" keyframe="1" occluded="0" outside="0" xtl="245.06" ytl="435.17" xbr="298.11" ybr="562.75">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00160" keyframe="0" occluded="0" outside="0" xtl="215.37" ytl="442.74" xbr="281.06" ybr="570.33">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00161" keyframe="0" occluded="0" outside="0" xtl="195.16" ytl="449.69" xbr="260.85" ybr="577.27">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00162" keyframe="0" occluded="0" outside="0" xtl="174.95" ytl="455.38" xbr="233.06" ybr="582.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00163" keyframe="0" occluded="0" outside="0" xtl="155.06" ytl="446.53" xbr="202.42" ybr="582.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00164" keyframe="1" occluded="0" outside="0" xtl="134.84" ytl="448.43" xbr="186.0" ybr="584.85">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00165" keyframe="0" occluded="0" outside="0" xtl="106.11" ytl="454.11" xbr="168.0" ybr="590.54">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00166" keyframe="0" occluded="0" outside="0" xtl="84.95" ytl="466.75" xbr="156.32" ybr="603.17">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00167" keyframe="0" occluded="0" outside="0" xtl="67.58" ytl="470.53" xbr="133.27" ybr="606.96">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00168" keyframe="0" occluded="0" outside="0" xtl="43.58" ytl="475.59" xbr="105.48" ybr="612.01">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00169" keyframe="1" occluded="0" outside="0" xtl="24.63" ytl="475.59" xbr="77.69" ybr="615.8">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00170" keyframe="1" occluded="0" outside="0" xtl="3.79" ytl="490.11" xbr="65.69" ybr="626.54">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00171" keyframe="0" occluded="0" outside="0" xtl="0.0" ytl="495.8" xbr="54.63" ybr="632.22">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">none</attribute>
+        </box>
+        <box frame="00172" keyframe="0" occluded="1" outside="0" xtl="0.0" ytl="573.48" xbr="37.58" ybr="659.38">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+        <box frame="00173" keyframe="0" occluded="1" outside="0" xtl="0.0" ytl="659.38" xbr="12.95" ybr="694.12">
+            <attribute name="id">3c4b5c397d6</attribute>
+            <attribute name="action">walking</attribute>
+            <attribute name="gesture">__undefined__</attribute>
+            <attribute name="look">not-looking</attribute>
+            <attribute name="cross">not-crossing</attribute>
+            <attribute name="occlusion">full</attribute>
+        </box>
+    </track>
+</annotations>
+
