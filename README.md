@@ -20,6 +20,8 @@ After the PIE Models and Dataset are installed, the documents here will be merge
 
 The annotations are distributed in three folders for training, validating and testing named as `wod1tr`, `wod2va`, and `wod3te` respectively for each of the annotation types. The images from waymo open dataset shall also be distributed in similar folder names. 
 
+The [Quick Start](https://github.com/waymo-research/waymo-open-dataset/blob/master/docs/quick_start.md) on [waymo-open-dataset](https://github.com/waymo-research/waymo-open-dataset) repository could be helpful in installing the waymo-open-dataset module.
+
 If interested, you may use a [data and image extractor](https://github.com/eyuell/waymo-pie-annotation) from waymo open dataset, which is organized by the same author of this implementation. The list of videos matched with the annotations is presented in the [segments_list](segments_list.txt) file.
 
 <a name="exe_pie"></a>
