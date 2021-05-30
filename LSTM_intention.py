@@ -38,6 +38,15 @@ from sklearn.metrics import f1_score, fbeta_score, recall_score
 import time
 from datetime import timedelta
 
+"""
+A Vanilla LSTM Model with two basic layers of LSTM and Dense
+    128 number of batchs
+    100 number of epochs
+    256 number of filters for LSTM
+    10% dropout and recurrent dropout for reducing overfitting
+    a uniform kernel initializer
+    val_loss monitor (loss could also be good)
+"""
 
 def get_sett():
     n_batch = 128
@@ -119,7 +128,7 @@ def train_as_new(n_batch, n_epochs, n_filters, model_file, data_path):
                 batch_size=n_batch,
                 validation_data=Val_data,
                 epochs=n_epochs,
-                #callbacks=call_backs,
+                callbacks=call_backs,
                 verbose=1)
 
         # Save trained model

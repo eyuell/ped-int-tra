@@ -35,9 +35,19 @@ import time
 from datetime import timedelta
 
 
+"""
+A Vanilla LSTM Model with two basic layers of LSTM and Dense
+    128 number of batchs
+    150 number of epochs
+    256 number of filters for LSTM
+    10% dropout and recurrent dropout for reducing overfitting
+    a uniform kernel initializer
+    val_loss monitor (loss could also be good)
+"""
+
 def get_sett():
     n_batch = 128
-    n_epochs = 100
+    n_epochs = 150
     n_filters = 256
 
     return n_batch, n_epochs, n_filters
@@ -203,7 +213,7 @@ def train_bbox(n_batch, n_epochs, call_backs, n_filters, traject_model_file, dat
                     validation_data=[Val_data[0][0],shorten_dim(Val_data[1])],
                     batch_size=n_batch,
                     epochs=n_epochs,
-                    #callbacks=call_backs,
+                    callbacks=call_backs,
                     verbose=1)
 
         # Save trained model
@@ -265,7 +275,7 @@ def train_speed(n_batch, n_epochs, call_backs, n_filters, speed_model_file, data
                     validation_data=[Val_data_Spe[0][0], shorten_dim(Val_data_Spe[1])],
                     batch_size=n_batch,
                     epochs=n_epochs,
-                    #callbacks=call_backs,
+                    callbacks=call_backs,
                     verbose=1)
 
         # Save trained model
