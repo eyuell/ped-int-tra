@@ -472,12 +472,14 @@ class PIEPredict(object):
         perf['mse-45'] = performance.mean(axis=None)
         perf['mse-last'] = performance[:, -1, :].mean(axis=None)
 
-        print()
-        print("======================================")
-        print("mse-5   : %.2f\nmse-10  : %.2f\nmse-15  : %.2f"% (perf['mse-5'], perf['mse-10'], perf['mse-15']))
-        print("mse-15th: %.2f\nmse-30  : %.2f\nmse-45  : %.2f"% (perf['mse-15th'], perf['mse-30'], perf['mse-45']))
-        print("MSE last: %f" % perf['mse-last'])
-        print("======================================")
+        # Custmized for data saving, Eyu
+        if not self._data_extract:
+            print()
+            print("======================================")
+            print("mse-5   : %.2f\nmse-10  : %.2f\nmse-15  : %.2f"% (perf['mse-5'], perf['mse-10'], perf['mse-15']))
+            print("mse-15th: %.2f\nmse-30  : %.2f\nmse-45  : %.2f"% (perf['mse-15th'], perf['mse-30'], perf['mse-45']))
+            print("MSE last: %f" % perf['mse-last'])
+            print("======================================")
 
         if model_opts['prediction_type'][0] == 'bbox':
             #  Performance on centers (displacement)
@@ -512,15 +514,16 @@ class PIEPredict(object):
             perf['c-mse-45'] = c_performance.mean(axis=None)
             perf['c-mse-last'] = c_performance[:, -1, :].mean(axis=None)
 
-
-            print()
-            print("======================================")
-            print("c-mse-5   : %.2f\nc-mse-10  : %.2f\nc-mse-15  : %.2f"
-                  % (perf['c-mse-5'], perf['c-mse-10'], perf['c-mse-15']))
-            print("c-mse-15th: %.2f\nc-mse-30  : %.2f\nc-mse-45  : %.2f"
-                  % (perf['c-mse-15th'], perf['c-mse-30'], perf['c-mse-45']))
-            print("c-mse-last: %f" % perf['c-mse-last'])
-            print("======================================")
+            # Custmized for data saving, Eyu
+            if not self._data_extract:
+                print()
+                print("======================================")
+                print("c-mse-5   : %.2f\nc-mse-10  : %.2f\nc-mse-15  : %.2f"
+                    % (perf['c-mse-5'], perf['c-mse-10'], perf['c-mse-15']))
+                print("c-mse-15th: %.2f\nc-mse-30  : %.2f\nc-mse-45  : %.2f"
+                    % (perf['c-mse-15th'], perf['c-mse-30'], perf['c-mse-45']))
+                print("c-mse-last: %f" % perf['c-mse-last'])
+                print("======================================")
 
         del test_data #clear memory
 
@@ -548,11 +551,13 @@ class PIEPredict(object):
             with open(save_results_path, 'wb') as fid:
                 pickle.dump(results, fid, pickle.HIGHEST_PROTOCOL)
 
-        t = PrettyTable(['MSE', 'C_MSE'])
-        t.title = 'Trajectory prediction model'
-        t.add_row([perf['mse-45'], perf['c-mse-45']])
+        # Custmized for data saving, Eyu
+        if not self._data_extract:
+            t = PrettyTable(['MSE', 'C_MSE'])
+            t.title = 'Trajectory prediction model'
+            t.add_row([perf['mse-45'], perf['c-mse-45']])
 
-        print(t)
+            print(t)
 
 
     def test_final(self, data_test, traj_model_path='', intent_model_path='', speed_model_path=''):
@@ -656,11 +661,13 @@ class PIEPredict(object):
         perf['mse-45'] = performance.mean(axis=None)
         perf['mse-last'] = performance[:, -1, :].mean(axis=None)
 
-        print("mse-5   : %.2f\nmse-10  : %.2f\nmse-15  : %.2f"
-              % (perf['mse-5'], perf['mse-10'], perf['mse-15']))
-        print("mse-15th: %.2f\nmse-30  : %.2f\nmse-45  : %.2f"
-              % (perf['mse-15th'], perf['mse-30'], perf['mse-45']))
-        print("mse-last: %.2f\n" % (perf['mse-last']))
+        # Custmized for data saving, Eyu
+        if not self._data_extract:
+            print("mse-5   : %.2f\nmse-10  : %.2f\nmse-15  : %.2f"
+                % (perf['mse-5'], perf['mse-10'], perf['mse-15']))
+            print("mse-15th: %.2f\nmse-30  : %.2f\nmse-45  : %.2f"
+                % (perf['mse-15th'], perf['mse-30'], perf['mse-45']))
+            print("mse-last: %.2f\n" % (perf['mse-last']))
 
         #  Performance on centers (displacement)
         model_opts['normalize_bbox'] = False
@@ -698,11 +705,13 @@ class PIEPredict(object):
         perf['c-mse-45'] = c_performance.mean(axis=None)
         perf['c-mse-last'] = c_performance[:, -1, :].mean(axis=None)
 
-        print("c-mse-5   : %.2f\nc-mse-10  : %.2f\nc-mse-15  : %.2f" \
-              % (perf['c-mse-5'], perf['c-mse-10'], perf['c-mse-15']))
-        print("c-mse-15th: %.2f\nc-mse-30  : %.2f\nc-mse-45  : %.2f" \
-              % (perf['c-mse-15th'], perf['c-mse-30'], perf['c-mse-45']))
-        print("c-mse-last: %.2f\n" % (perf['c-mse-last']))
+        # Custmized for data saving, Eyu
+        if not self._data_extract:
+            print("c-mse-5   : %.2f\nc-mse-10  : %.2f\nc-mse-15  : %.2f" \
+                % (perf['c-mse-5'], perf['c-mse-10'], perf['c-mse-15']))
+            print("c-mse-15th: %.2f\nc-mse-30  : %.2f\nc-mse-45  : %.2f" \
+                % (perf['c-mse-15th'], perf['c-mse-30'], perf['c-mse-45']))
+            print("c-mse-last: %.2f\n" % (perf['c-mse-last']))
 
         save_results_path = os.path.join(traj_model_path,
                                          '{:.2f}.pkl'.format(perf['mse-45']))
@@ -726,12 +735,14 @@ class PIEPredict(object):
                            'performance': perf}
             with open(save_results_path, 'wb') as fid:
                 pickle.dump(results, fid, pickle.HIGHEST_PROTOCOL)
-        
-        t = PrettyTable(['MSE', 'C_MSE'])
-        t.title = 'Trajectory prediction model (loc + PIE_intent + PIE_speed)'
-        t.add_row([perf['mse-45'], perf['c-mse-45']])
 
-        print(t)
+        # Custmized for data saving, Eyu
+        if not self._data_extract:
+            t = PrettyTable(['MSE', 'C_MSE'])
+            t.title = 'Trajectory prediction model (loc + PIE_intent + PIE_speed)'
+            t.add_row([perf['mse-45'], perf['c-mse-45']])
+
+            print(t)
 
 
     def pie_encdec(self):
