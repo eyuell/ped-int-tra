@@ -3,10 +3,11 @@
 ================================================================================================================
 1   segment-11971497357570544465_1200_000_1220_000_with_camera_labels.tfrecord        Training
 2   segment-10061305430875486848_1080_000_1100_000_with_camera_labels.tfrecord        Training
-3   segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord         Training
-4   segment-1083056852838271990_4080_000_4100_000_with_camera_labels.tfrecord         Validating
-5   segment-11940460932056521663_1760_000_1780_000_with_camera_labels.tfrecord        Validating and Training
-6   segment-1146261869236413282_1680_000_1700_000_with_camera_labels.tfrecord         Testing
+3   segment-9547911055204230158_1567_950_1587_950_with_camera_labels.tfrecord         Training
+4   segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord         Validating
+5   segment-1083056852838271990_4080_000_4100_000_with_camera_labels.tfrecord         Validating
+6   segment-11940460932056521663_1760_000_1780_000_with_camera_labels.tfrecord        Validating and Training
+7   segment-1146261869236413282_1680_000_1700_000_with_camera_labels.tfrecord         Testing
 ================================================================================================================
 
 
