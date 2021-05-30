@@ -8,6 +8,7 @@ This repository implements the [PIE Model](https://github.com/aras62/PIEPredict)
 * [Save Data](#save_data)
 * [Execute LSTM](#exe_lstm)
 * [Execute On Waymo](#exe_waymo)
+* [Clear database](#clr_db)
 * [Corresponding author](#author)
 * [License](#license)
 
@@ -63,6 +64,11 @@ For example, to train and test on WOD using PIE models, run `python train_test.p
 To save training and validation data for lstm, `python train_test.py -1 waymo` and for testing data, use `python train_test.py 3 waymo`, and so on.
 
 To give example for LSTM on WOD, `python LSTM_intention.py waymo` and `python LSTM_trajectory.py waymo`
+
+<a name="clr_db"></a>
+## Clear database
+
+In order to generate new database from supplied dataset, removing an existing database is necessary. To remove the database, navigate to `/PIE/data_cache` and remove using command `rm pie_database.pkl`. Thereafter, executing the PIE model will generate new database as per supplied dataset.
 
 <a name="author"></a>
 ## Corresponding author
