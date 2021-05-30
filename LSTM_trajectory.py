@@ -35,12 +35,37 @@ import time
 from datetime import timedelta
 
 
+def get_sett():
+    n_batch = 128
+    n_epochs = 100
+    n_filters = 256
+
+    return n_batch, n_epochs, n_filters
+
+
+def get_callback():
+    early_stop = EarlyStopping(monitor='val_loss',
+                                min_delta=0.0001,
+                                patience=15,
+                                verbose=1)
+
+    plateau_sch = ReduceLROnPlateau(monitor='val_loss',
+                                    factor=0.2,
+                                    patience=5,
+                                    min_lr=0.0000001,
+                                    verbose = 1)
+
+    call_backs = [early_stop, plateau_sch]
+
+    return call_backs
+
+
 def check_path(f_path):
     if not exists(f_path):
         makedirs(f_path)
 
 
-def get_data(data_name, file_name, data_path): 
+def get_data(data_name, file_name, data_path):
     if data_name:
         print("\nWorking on", data_name)
     path_line = os.path.join(data_path, file_name)
@@ -74,7 +99,7 @@ def get_performance(Ytest, test_results, title, axis_n):
     t.title = title
     t.align = "l"
 
-    t.add_row(['mse-5    : ' + str(round(perf['mse-5'], 4)) ])
+    t.add_row(['mse-5     : ' + str(round(perf['mse-5'], 4)) ])
     t.add_row(['mse-10    : ' + str(round(perf['mse-10'], 4)) ])
     t.add_row(['mse-15    : ' + str(round(perf['mse-15'], 4)) ])
     t.add_row(['mse-15th  : ' + str(round(perf['mse-15th'], 4)) ])
@@ -130,11 +155,11 @@ def lstm_model (first_shape, second_shape, n_filr, model_name):
 
     input_layer = Input(shape=(first_shape[1], first_shape[2]), name='input_layer')
 
-    lstm_layer = LSTM(n_filr, return_state=True, return_sequences=True, activation='relu', name='lstm_layer')(input_layer)
+    lstm_layer = LSTM(n_filr, return_state=True, return_sequences=True, kernel_initializer='uniform', dropout=0.1, recurrent_dropout=0.1, activation='relu', name='lstm_layer')(input_layer)
 
     lstm_states = lstm_layer[1:]
 
-    output_dense = Dense(second_shape[1] * second_shape [2], activation='linear', name='output_dense')(lstm_states[0])
+    output_dense = Dense(second_shape[1] * second_shape [2], kernel_initializer='uniform', activation='linear', name='output_dense')(lstm_states[0])
 
     model = Model(inputs=[input_layer], outputs=output_dense, name=model_name)
 
@@ -192,23 +217,6 @@ def train_bbox(n_batch, n_epochs, call_backs, n_filters, traject_model_file, dat
         return None
 
 
-def get_callback():
-    early_stop = EarlyStopping(monitor='val_loss',
-                                min_delta=0.0001,
-                                patience=10,
-                                verbose=1)
-
-    plateau_sch = ReduceLROnPlateau(monitor='val_loss',
-                                    factor=0.5,
-                                    patience=10,
-                                    min_lr=0.0000001,
-                                    verbose = 1)
-
-    call_backs = [early_stop, plateau_sch]
-
-    return call_backs
-
-
 def predict_bbox(model, n_batch, data_path, data_set):
     data_exists, X_test = get_data('Bounding Box Related X and Y data', 'box_intent_speed_data.pkl', data_path)    # F_X_test_Box 14, 4 BB
     data_exists, Y_test = get_data('', 'box_target_speed_data.pkl', data_path)    # F_Y_test_Box 45, 4 BB
@@ -257,7 +265,7 @@ def train_speed(n_batch, n_epochs, call_backs, n_filters, speed_model_file, data
                     validation_data=[Val_data_Spe[0][0], shorten_dim(Val_data_Spe[1])],
                     batch_size=n_batch,
                     epochs=n_epochs,
-                    callbacks=call_backs,
+                    #callbacks=call_backs,
                     verbose=1)
 
         # Save trained model
@@ -287,6 +295,9 @@ def predict_speed(speed_model, n_batch, data_path, data_set):
 
 
 def main(data_set="pie"):
+    n_batch, n_epochs, n_filters = get_sett()
+    call_backs = get_callback()
+
     expected_mix = ['pie', 'waymo', 'pie-waymo']
 
     if data_set not in expected_mix:
@@ -304,11 +315,6 @@ def main(data_set="pie"):
     check_path(data_path)
     check_path(traject_model_path)
     check_path(speed_model_path)
-
-    n_batch = 64
-    n_epochs = 100
-    n_filters = 256
-    call_backs = get_callback()
 
     train_speed_new = False
     train_box_new = False

@@ -39,6 +39,14 @@ import time
 from datetime import timedelta
 
 
+def get_sett():
+    n_batch = 128
+    n_epochs = 100
+    n_filters = 256
+
+    return n_batch, n_epochs, n_filters
+
+
 def check_path(f_path):
     if not exists(f_path):
         makedirs(f_path)
@@ -70,11 +78,9 @@ def vanila_LSTM(img_shape, box_shape, n_fil):
 
     lstm_inputs = Concatenate(axis=2)([reshape_input, boxes_input])
 
-    lstm_output = LSTM(n_fil, activation='relu', name='lstm-layer')(lstm_inputs)
+    lstm_output = LSTM(n_fil, activation='relu', kernel_initializer='uniform', dropout=0.1, recurrent_dropout=0.1, name='lstm-layer')(lstm_inputs)
 
-    lstm_dense_output = Dense(n_fil, activation='relu', name='lstm-dense')(lstm_output)
-
-    dense_output = Dense(1, activation='sigmoid', name='output-dense')(lstm_dense_output)
+    dense_output = Dense(1, activation='sigmoid', kernel_initializer='uniform', name='output-dense')(lstm_output)
 
     lstm_model = Model(inputs=[images_input, boxes_input], outputs=dense_output, name='LSTM-Intent-Model')
 
@@ -94,14 +100,14 @@ def train_as_new(n_batch, n_epochs, n_filters, model_file, data_path):
     if Xtrain is not None and Ytrain is not None and Val_data is not None:
         model = vanila_LSTM(Xtrain[0].shape, Xtrain[1].shape, n_filters)
 
-        early_stop = EarlyStopping(monitor='val_accuracy',
+        early_stop = EarlyStopping(monitor='val_loss',
                                     min_delta=0.0001,
-                                    patience=10,
+                                    patience=20,
                                     verbose=1)
 
-        plateau_sch = ReduceLROnPlateau(monitor='val_accuracy',
+        plateau_sch = ReduceLROnPlateau(monitor='val_loss',
                                         factor=0.2,
-                                        patience=10,
+                                        patience=5,
                                         min_lr=0.0000001,
                                         verbose = 1)
 
@@ -204,6 +210,8 @@ def get_model(n_batch, n_epochs, n_filters, best_model_file, model_file, data_pa
 
 
 def main(data_set="pie"):
+    n_batch, n_epochs, n_filters = get_sett()
+
     expected_mix = ['pie', 'waymo', 'pie-waymo']
 
     if data_set not in expected_mix:
@@ -215,10 +223,6 @@ def main(data_set="pie"):
     model_path = data_path + 'intent/'
 
     start = time.time()
-
-    n_batch = 128
-    n_epochs = 100
-    n_filters = 256
 
     check_path(lstm_path)
     check_path(data_path)
